@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newros — Iraakse, Poolse &amp; Nederlandse producten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#C8102E;
+    --red-dark:#9A0C22;
+    --cream:#FBF5EC;
+    --white:#FFFFFF;
+    --charcoal:#2B2422;
+    --gold:#E3A23D;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Work Sans', sans-serif;color:var(--charcoal);background:var(--cream);line-height:1.6;}
+  h1,h2,h3{font-family:'Fraunces', serif;font-weight:700;line-height:1.1;}
+  a{color:inherit;text-decoration:none;}
+  .awning{height:14px;background:repeating-linear-gradient(45deg,var(--red) 0px, var(--red) 28px,var(--cream) 28px, var(--cream) 56px);}
+  header{background:var(--white);border-bottom:1px solid rgba(43,36,34,0.08);position:sticky;top:0;z-index:50;}
+  .nav-wrap{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;}
+  .logo-mark{display:flex;align-items:center;gap:12px;}
+  .logo-mark svg{height:46px;width:auto;display:block;}
+  .logo-text{font-family:'Fraunces',serif;font-weight:900;font-size:1.5rem;color:var(--red);letter-spacing:0.02em;}
+  .logo-sub{font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;color:var(--charcoal);opacity:0.6;text-transform:uppercase;}
+  nav ul{display:flex;gap:32px;list-style:none;font-weight:500;font-size:0.95rem;}
+  nav a{position:relative;padding:4px 0;transition:color .2s;}
+  nav a:hover{color:var(--red);}
+  nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--red);transition:width .25s ease;}
+  nav a:hover::after{width:100%;}
+  .nav-cta{background:var(--red);color:var(--white);padding:10px 22px;border-radius:999px;font-weight:600;font-size:0.9rem;white-space:nowrap;}
+  .nav-cta:hover{background:var(--red-dark);}
+  .mobile-toggle{display:none;background:none;border:none;font-size:1.6rem;color:var(--red);cursor:pointer;}
+  .hero{max-width:1180px;margin:0 auto;padding:80px 28px 60px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;}
+  .hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--red);margin-bottom:18px;}
+  .hero h1{font-size:clamp(2.6rem, 5.2vw, 4.4rem);color:var(--charcoal);margin-bottom:22px;}
+  .hero h1 em{font-style:italic;color:var(--red);}
+  .hero p{font-size:1.08rem;max-width:480px;color:rgba(43,36,34,0.78);margin-bottom:34px;}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{display:inline-block;padding:14px 30px;border-radius:999px;font-weight:600;font-size:0.95rem;transition:all .2s ease;border:2px solid transparent;}
+  .btn-primary{background:var(--red);color:var(--white);}
+  .btn-primary:hover{background:var(--red-dark);}
+  .btn-secondary{border-color:var(--charcoal);color:var(--charcoal);}
+  .btn-secondary:hover{border-color:var(--red);color:var(--red);}
+  .hero-emblem{display:flex;justify-content:center;align-items:center;}
+  .hero-emblem svg{width:100%;max-width:380px;height:auto;animation:spin 60s linear infinite;}
+  @keyframes spin{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+  @media (prefers-reduced-motion: reduce){.hero-emblem svg{animation:none;}}
+  section{padding:80px 28px;}
+  .section-inner{max-width:1180px;margin:0 auto;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 56px;}
+  .section-eyebrow{font-family:'Space Mono',monospace;font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .section-head h2{font-size:clamp(2rem,3.6vw,2.8rem);}
+  .section-head p{color:rgba(43,36,34,0.7);margin-top:14px;}
+  .divider{display:flex;justify-content:center;margin:8px 0 0;}
+  .divider svg{width:34px;height:34px;}
+  .offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .offer-card{background:var(--white);border-radius:18px;padding:36px 30px;border:1px solid rgba(43,36,34,0.06);transition:transform .25s ease, box-shadow .25s ease;}
+  .offer-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(43,36,34,0.08);}
+  .offer-icon{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;font-size:1.6rem;}
+  .offer-icon.red{background:rgba(200,16,46,0.1);color:var(--red);}
+  .offer-icon.gold{background:rgba(227,162,61,0.16);color:var(--gold);}
+  .offer-icon.charcoal{background:rgba(43,36,34,0.08);color:var(--charcoal);}
+  .offer-card h3{font-size:1.3rem;margin-bottom:10px;}
+  .offer-card p{color:rgba(43,36,34,0.7);font-size:0.96rem;}
+  .offer-card .tag-list{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;}
+  .offer-card .tag-list span{font-family:'Space Mono',monospace;font-size:0.72rem;background:var(--cream);border:1px solid rgba(43,36,34,0.08);padding:4px 10px;border-radius:999px;}
+  .uitgelicht{background:var(--charcoal);color:var(--cream);}
+  .uitgelicht .section-head p{color:rgba(251,245,236,0.65);}
+  .uitgelicht .section-eyebrow{color:var(--gold);}
+  .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .product-card{background:rgba(251,245,236,0.04);border:1px solid rgba(251,245,236,0.1);border-radius:14px;padding:26px 22px 22px;position:relative;overflow:hidden;}
+  .product-origin{font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .product-card h3{font-size:1.15rem;font-weight:600;font-family:'Work Sans',sans-serif;margin-bottom:18px;min-height:2.6em;}
+  .price-tag{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-weight:700;font-size:1.05rem;color:var(--white);background:var(--red);padding:8px 14px;border-radius:6px;transform:rotate(-2deg);}
+  .product-card:nth-child(even) .price-tag{transform:rotate(2deg);background:var(--gold);color:var(--charcoal);}
+  .verhaal{display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;}
+  .verhaal-visual{background:var(--white);border-radius:24px;padding:40px;border:1px solid rgba(43,36,34,0.06);display:flex;flex-direction:column;gap:18px;}
+  .verhaal-visual .flags{display:flex;gap:10px;}
+  .flag-chip{flex:1;border-radius:10px;padding:18px 14px;text-align:center;font-family:'Space Mono',monospace;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;}
+  .flag-chip.iraq{background:var(--red);color:var(--white);}
+  .flag-chip.poland{background:var(--charcoal);color:var(--cream);}
+  .flag-chip.nl{background:var(--gold);color:var(--charcoal);}
+  .quote{font-family:'Fraunces',serif;font-style:italic;font-size:1.25rem;line-height:1.5;color:var(--charcoal);border-left:3px solid var(--red);padding-left:20px;}
+  .quote-by{margin-top:14px;font-family:'Space Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(43,36,34,0.6);}
+  .verhaal-text .section-eyebrow{text-align:left;margin-bottom:14px;}
+  .verhaal-text h2{font-size:clamp(2rem,3.6vw,2.6rem);margin-bottom:20px;}
+  .verhaal-text p{color:rgba(43,36,34,0.75);margin-bottom:16px;}
+  .info{background:var(--white);border-top:1px solid rgba(43,36,34,0.06);border-bottom:1px solid rgba(43,36,34,0.06);}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;}
+  .hours-table{width:100%;border-collapse:collapse;font-size:0.98rem;}
+  .hours-table tr{border-bottom:1px solid rgba(43,36,34,0.08);}
+  .hours-table tr:last-child{border-bottom:none;}
+  .hours-table td{padding:12px 0;}
+  .hours-table td:first-child{font-weight:600;}
+  .hours-table td:last-child{text-align:right;font-family:'Space Mono',monospace;color:var(--red);}
+  .map-placeholder{background:var(--cream);border:2px dashed rgba(200,16,46,0.25);border-radius:16px;min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:30px;}
+  .map-placeholder .pin{font-size:2.2rem;}
+  .map-placeholder p{color:rgba(43,36,34,0.6);font-size:0.9rem;}
+  .map-placeholder strong{font-family:'Fraunces',serif;font-size:1.2rem;}
+  footer{background:var(--charcoal);color:var(--cream);padding:60px 28px 36px;}
+  .footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:48px;}
+  .footer-logo{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .footer-logo svg{height:40px;width:auto;}
+  .footer-logo span{font-family:'Fraunces',serif;font-weight:900;font-size:1.3rem;color:var(--cream);}
+  footer p{color:rgba(251,245,236,0.6);font-size:0.92rem;}
+  footer h4{font-family:'Space Mono',monospace;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:18px;color:var(--gold);}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  footer a{color:rgba(251,245,236,0.75);font-size:0.92rem;transition:color .2s;}
+  footer a:hover{color:var(--white);}
+  .footer-bottom{max-width:1180px;margin:48px auto 0;padding-top:24px;border-top:1px solid rgba(251,245,236,0.1);font-size:0.82rem;color:rgba(251,245,236,0.45);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  @media (max-width: 980px){
+    .hero{grid-template-columns:1fr;text-align:center;padding-top:50px;}
+    .hero p{margin-left:auto;margin-right:auto;}
+    .hero-actions{justify-content:center;}
+    .hero-emblem{order:-1;}
+    .offer-grid{grid-template-columns:1fr;}
+    .product-grid{grid-template-columns:repeat(2,1fr);}
+    .verhaal{grid-template-columns:1fr;}
+    .info-grid{grid-template-columns:1fr;}
+    .footer-inner{grid-template-columns:1fr 1fr;gap:36px;}
+  }
+  @media (max-width: 640px){
+    nav ul{display:none;}
+    .mobile-toggle{display:block;}
+    .nav-cta{font-size:0.8rem;padding:8px 16px;}
+    .product-grid{grid-template-columns:1fr;}
+    .footer-inner{grid-template-columns:1fr;}
+    section{padding:56px 20px;}
+  }
+</style>
+</head>
+<body>
+<div class="awning"></div>
+<header>
+  <div class="nav-wrap">
+    <a href="#top" class="logo-mark">
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(110,110)">
+          <circle r="100" fill="#FBF5EC" stroke="#C8102E" stroke-width="4"/>
+          <g>
+            <g transform="rotate(0)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(22.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+            <g transform="rotate(45)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(67.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+            <g transform="rotate(90)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(112.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+            <g transform="rotate(135)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(157.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+            <g transform="rotate(180)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(202.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+            <g transform="rotate(225)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(247.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+            <g transform="rotate(270)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(292.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+            <g transform="rotate(315)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(337.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+          </g>
+          <circle r="48" fill="#C8102E"/>
+          <circle r="38" fill="#FBF5EC"/>
+          <path d="M0,-22 C12,-10 16,2 8,14 C4,20 -4,20 -8,14 C-14,4 -10,-6 0,-22 Z" fill="#C8102E"/>
+        </g>
+      </svg>
+      <div>
+        <div class="logo-text">Newros</div>
+        <div class="logo-sub">Bagdad · Warszawa · Den Haag</div>
+      </div>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#aanbod">Aanbod</a></li>
+        <li><a href="#uitgelicht">Uitgelicht</a></li>
+        <li><a href="#verhaal">Ons verhaal</a></li>
+        <li><a href="#openingstijden">Openingstijden</a></li>
+      </ul>
+    </nav>
+    <a href="#openingstijden" class="nav-cta">Route &amp; openingstijden</a>
+    <a href="https://newros-app-88h4.vercel.app" target="_blank" class="nav-cta" style="background:#c0392b; margin-left:10px;">🛒 Bestel online</a>
+    <button class="mobile-toggle" aria-label="Menu">☰</button>
+  </div>
+</header>
+<main id="top">
+  <section class="hero">
+    <div>
+      <div class="hero-eyebrow">Buurtsupermarkt · drie keukens, één toonbank</div>
+      <h1>Vers uit <em>Bagdad</em>,<br>vers uit <em>Warszawa</em>,<br>vers van de hoek.</h1>
+      <p>Bij Newros vindt u Iraakse specialiteiten, Poolse producten en de Nederlandse boodschappen van elke dag — allemaal onder één dak, vers en betaalbaar.</p>
+      <div class="hero-actions">
+        <a href="#aanbod" class="btn btn-primary">Bekijk ons aanbod</a>
+        <a href="#openingstijden" class="btn btn-secondary">Route &amp; openingstijden</a>
+      </div>
+    </div>
+    <div class="hero-emblem">
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(110,110)">
+          <circle r="100" fill="#FFFFFF" stroke="#C8102E" stroke-width="4"/>
+          <g>
+            <g transform="rotate(0)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(22.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+            <g transform="rotate(45)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(67.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+            <g transform="rotate(90)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(112.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+            <g transform="rotate(135)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(157.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+            <g transform="rotate(180)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(202.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+            <g transform="rotate(225)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(247.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+            <g transform="rotate(270)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(292.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+            <g transform="rotate(315)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            <g transform="rotate(337.5)"><polygon fill="#E3A23D" points="0,-78 6,-52 -6,-52"/></g>
+          </g>
+          <circle r="48" fill="#C8102E"/>
+          <circle r="38" fill="#FFFFFF"/>
+          <path d="M0,-22 C12,-10 16,2 8,14 C4,20 -4,20 -8,14 C-14,4 -10,-6 0,-22 Z" fill="#C8102E"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+  <section id="aanbod">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Ons aanbod</div>
+        <h2>Drie schappen, één winkel</h2>
+        <p>Van dadels en za'atar tot pierogi en kielbasa, tot de dagelijkse Nederlandse boodschappen — bij Newros hoeft u maar op één plek te zijn.</p>
+      </div>
+      <div class="offer-grid">
+        <div class="offer-card">
+          <div class="offer-icon red">☀</div>
+          <h3>Iraakse specialiteiten</h3>
+          <p>Dadels, kruiden, vers platbrood, rijst, bonen en alles voor een traditionele maaltijd.</p>
+          <div class="tag-list"><span>dadels</span><span>za'atar</span><span>sumak</span><span>platbrood</span></div>
+        </div>
+        <div class="offer-card">
+          <div class="offer-icon gold">🥟</div>
+          <h3>Poolse producten</h3>
+          <p>Verse worst, zuivel, ingeblikt en gebak — net zoals u dat van thuis kent.</p>
+          <div class="tag-list"><span>kielbasa</span><span>pierogi</span><span>zuurkool</span><span>kefir</span></div>
+        </div>
+        <div class="offer-card">
+          <div class="offer-icon charcoal">🛒</div>
+          <h3>Nederlandse boodschappen</h3>
+          <p>Van melk en brood tot wasmiddel — alle dagelijkse benodigdheden onder handbereik.</p>
+          <div class="tag-list"><span>zuivel</span><span>brood</span><span>huishouden</span><span>snacks</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="uitgelicht" class="uitgelicht">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Deze week uitgelicht</div>
+        <h2>Recht van het schap</h2>
+        <p>Een kleine greep uit wat er vandaag vers in de winkel ligt.</p>
+      </div>
+      <div class="product-grid">
+        <div class="product-card"><div class="product-origin">Irak</div><h3>Verse Medjool dadels</h3><span class="price-tag">€ 4,50 / kg</span></div>
+        <div class="product-card"><div class="product-origin">Polen</div><h3>Kielbasa worst, vers gerookt</h3><span class="price-tag">€ 6,95</span></div>
+        <div class="product-card"><div class="product-origin">Irak</div><h3>Vers gebakken platbrood</h3><span class="price-tag">€ 1,25</span></div>
+        <div class="product-card"><div class="product-origin">Italie</div><h3>Tomaten</h3><span class="price-tag">€ 2,10</span></div>
+        <div class="product-card"><div class="product-origin">Irak</div><h3>Sumak &amp; za'atar mengsel</h3><span class="price-tag">€ 3,00</span></div>
+        <div class="product-card"><div class="product-origin">Polen</div><h3>Faxe Beer Extra strong 1 Liter</h3><span class="price-tag">€ 4,95</span></div>
+        <div class="product-card"><div class="product-origin">NL</div><h3>Volle melk, 1 liter</h3><span class="price-tag">€ 1,39</span></div>
+        <div class="product-card"><div class="product-origin">NL</div><h3>Vers brood van de bakker</h3><span class="price-tag">€ 2,60</span></div>
+      </div>
+    </div>
+  </section>
+  <section id="verhaal">
+    <div class="section-inner verhaal">
+      <div class="verhaal-visual">
+        <div class="flags">
+          <div class="flag-chip iraq">Irak</div>
+          <div class="flag-chip poland">Polen</div>
+          <div class="flag-chip nl">NL</div>
+        </div>
+        <p class="quote">"We wilden een plek waar je de smaken van thuis kunt vinden, of dat thuis nu Bagdad, Warszawa of de straat hiernaast is."</p>
+        <div class="quote-by">— Familie Newros</div>
+      </div>
+      <div class="verhaal-text">
+        <div class="section-eyebrow">Ons verhaal</div>
+        <h2>Eén toonbank, drie keukens</h2>
+        <p>Newros begon als een kleine buurtwinkel met één doel: producten die je nergens anders vindt, dichtbij en betaalbaar maken. Wat begon met Iraakse specialiteiten groeide uit tot een plek waar ook Poolse klanten hun vertrouwde merken vinden — naast alle Nederlandse boodschappen die u dagelijks nodig heeft.</p>
+        <p>Of u nu op zoek bent naar verse dadels, een pot zuurkool of gewoon een pak melk: bij Newros is het allemaal binnen handbereik, met persoonlijke aandacht aan de toonbank.</p>
+      </div>
+    </div>
+  </section>
+  <section id="openingstijden" class="info">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow">Bezoek ons</div>
+        <h2>Openingstijden &amp; locatie</h2>
+      </div>
+      <div class="info-grid">
+        <div>
+          <table class="hours-table">
+            <tr><td>Maandag – Vrijdag</td><td>10:00 – 23:00</td></tr>
+            <tr><td>Zaterdag</td><td>10:00 – 23:00</td></tr>
+            <tr><td>Zondag</td><td>10:00 – 23:00</td></tr>
+            <tr><td>Feestdagen</td><td>Aangepaste tijden</td></tr>
+          </table>
+        </div>
+        <div style="border-radius:16px; overflow:hidden; height:340px;">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2454.009423328551!2d4.277143999999993!3d52.043141299999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5b14f68e4813f%3A0x8c8d647430b54d9a!2sSupermarkt%20Newroz!5e0!3m2!1snl!2snl!4v1781556391237!5m2!1snl!2snl" width="100%" height="100%" style="border:0; display:block;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+  </section>
+</main>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g transform="translate(110,110)">
+            <circle r="100" fill="#FBF5EC" stroke="#C8102E" stroke-width="4"/>
+            <g>
+              <g transform="rotate(0)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+              <g transform="rotate(45)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+              <g transform="rotate(90)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+              <g transform="rotate(135)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+              <g transform="rotate(180)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+              <g transform="rotate(225)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+              <g transform="rotate(270)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+              <g transform="rotate(315)"><polygon fill="#C8102E" points="0,-92 7,-52 -7,-52"/></g>
+            </g>
+            <circle r="48" fill="#C8102E"/>
+            <circle r="38" fill="#FBF5EC"/>
+          </g>
+        </svg>
+        <span>Newros</span>
+      </div>
+      <p>Iraakse specialiteiten, Poolse producten &amp; Nederlandse boodschappen — onder één dak, vers en dichtbij.</p>
+    </div>
+    <div>
+      <h4>Snel naar</h4>
+      <ul>
+        <li><a href="#aanbod">Aanbod</a></li>
+        <li><a href="#uitgelicht">Uitgelicht</a></li>
+        <li><a href="#verhaal">Ons verhaal</a></li>
+        <li><a href="#openingstijden">Openingstijden</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li>Leggelostraat 61,</li>
+        <li>2541 HR Den Haag</li>
+        <li>06 123456789</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Volg ons</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Newros — Alle rechten voorbehouden</span>
+    <span>Bagdad · Warszawa · Den Haag</span>
+  </div>
+</footer>
+</body>
+</html>
